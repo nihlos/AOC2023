@@ -40,8 +40,8 @@ for i in range(len(instanceList)):
         for k in range(copy):
             instanceList[i + k + 1] += 1
 
-for i in range(len(instanceList)):
-    p2 += instanceList[i]
+for instance in instanceList:
+    p2 += instance
 
 print(p1)
 print(p2)
