@@ -170,6 +170,7 @@ seedRanges = tempList
 finalSeed = 999999999999999
 for i in range(len(seedRanges)):
     for seed in range(seedRanges[i][0], seedRanges[i][0] + seedRanges[i][1]):
+        print(seed)
         tempValue = 0
 
         # soil
