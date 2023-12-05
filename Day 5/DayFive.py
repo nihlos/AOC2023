@@ -4,7 +4,6 @@ file = file.read().split('\n')
 
 seeds = []
 seedRanges = []
-finalRanges = []
 
 soil = []
 fertilizer = []
@@ -83,10 +82,10 @@ for i in range(len(seeds)):
     for map in soil:
         destination = map[0]
         source = map[1]
-        length = map[2]
+        length = map[2] - 1
 
         # is the seed between the source and the source + range (named length to avoid shadowing)
-        if source <= seeds[i] <= source + length - 1:
+        if source <= seeds[i] <= source + length:
             tempValue = destination + seeds[i] - source
 
     seeds[i] = tempValue
@@ -95,9 +94,9 @@ for i in range(len(seeds)):
     for map in fertilizer:
         destination = map[0]
         source = map[1]
-        length = map[2]
+        length = map[2] - 1
 
-        if source <= seeds[i] <= source + length - 1:
+        if source <= seeds[i] <= source + length:
             tempValue = destination + seeds[i] - source
 
     seeds[i] = tempValue
@@ -106,9 +105,9 @@ for i in range(len(seeds)):
     for map in water:
         destination = map[0]
         source = map[1]
-        length = map[2]
+        length = map[2] - 1
 
-        if source <= seeds[i] <= source + length - 1:
+        if source <= seeds[i] <= source + length:
             tempValue = destination + seeds[i] - source
 
     seeds[i] = tempValue
@@ -117,9 +116,9 @@ for i in range(len(seeds)):
     for map in light:
         destination = map[0]
         source = map[1]
-        length = map[2]
+        length = map[2] - 1
 
-        if source <= seeds[i] <= source + length - 1:
+        if source <= seeds[i] <= source + length:
             tempValue = destination + seeds[i] - source
 
     seeds[i] = tempValue
@@ -128,9 +127,9 @@ for i in range(len(seeds)):
     for map in temperature:
         destination = map[0]
         source = map[1]
-        length = map[2]
+        length = map[2] - 1
 
-        if source <= seeds[i] <= source + length - 1:
+        if source <= seeds[i] <= source + length:
             tempValue = destination + seeds[i] - source
 
     seeds[i] = tempValue
@@ -139,9 +138,9 @@ for i in range(len(seeds)):
     for map in humidity:
         destination = map[0]
         source = map[1]
-        length = map[2]
+        length = map[2] - 1
 
-        if source <= seeds[i] <= source + length - 1:
+        if source <= seeds[i] <= source + length:
             tempValue = destination + seeds[i] - source
 
     seeds[i] = tempValue
@@ -150,9 +149,9 @@ for i in range(len(seeds)):
     for map in location:
         destination = map[0]
         source = map[1]
-        length = map[2]
+        length = map[2] - 1
 
-        if source <= seeds[i] <= source + length - 1:
+        if source <= seeds[i] <= source + length:
             tempValue = destination + seeds[i] - source
 
     seeds[i] = tempValue
@@ -167,8 +166,92 @@ seedRanges = tempList
 
 
 # p2: logic to find locations
+# brute forcing this because I can't figure it out otherwise
+finalSeed = 999999999999999
 for i in range(len(seedRanges)):
-    # DO THIS !!!!!!!!!!!!!!
+    for seed in range(seedRanges[i][0], seedRanges[i][0] + seedRanges[i][1]):
+        print(seed)
+        tempValue = 0
+
+        # soil
+        for map in soil:
+            destination = map[0]
+            source = map[1]
+            length = map[2] - 1
+
+            if source <= seed <= source + length:
+                tempValue = destination + seed - source
+
+        seed = tempValue
+
+        # fertilizer
+        for map in fertilizer:
+            destination = map[0]
+            source = map[1]
+            length = map[2] - 1
+
+            if source <= seed <= source + length:
+                tempValue = destination + seed - source
+
+        seed = tempValue
+
+        # water
+        for map in water:
+            destination = map[0]
+            source = map[1]
+            length = map[2] - 1
+
+            if source <= seed <= source + length:
+                tempValue = destination + seed - source
+
+        seed = tempValue
+
+        # light
+        for map in light:
+            destination = map[0]
+            source = map[1]
+            length = map[2] - 1
+
+            if source <= seed <= source + length:
+                tempValue = destination + seed - source
+
+        finalSeed = tempValue
+
+        # temperature
+        for map in temperature:
+            destination = map[0]
+            source = map[1]
+            length = map[2] - 1
+
+            if source <= seed <= source + length:
+                tempValue = destination + seed - source
+
+        seed = tempValue
+
+        # humidity
+        for map in humidity:
+            destination = map[0]
+            source = map[1]
+            length = map[2] - 1
+
+            if source <= seed <= source + length:
+                tempValue = destination + seed - source
+
+        seed = tempValue
+
+        # location
+        for map in location:
+            destination = map[0]
+            source = map[1]
+            length = map[2] - 1
+
+            if source <= seed <= source + length:
+                tempValue = destination + seed - source
+
+        seed = tempValue
+
+        if seed < finalSeed:
+            finalSeed = seed
 
 print(min(seeds))
-print(min(seedRanges))
+print(finalSeed)
