@@ -254,6 +254,7 @@ for i in range(len(seedRanges)):
             finalSeed = seed
 
         # progress check
+        # only took like 20 hours of runtime to complete
         print(str(i) + ': ' + str(originalSeed) + ' - ' + str(seedRanges[i][0] + seedRanges[i][1]) + ' | ' + str(finalSeed))
         print()
 
