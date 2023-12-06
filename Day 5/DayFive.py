@@ -167,10 +167,10 @@ seedRanges = tempList
 
 # p2: logic to find locations
 # brute forcing this because I can't figure it out otherwise
-finalSeed = 999999999999999
+finalSeed = 9999999999999
 for i in range(len(seedRanges)):
     for seed in range(seedRanges[i][0], seedRanges[i][0] + seedRanges[i][1]):
-        print(seed)
+        originalSeed = seed
         tempValue = 0
 
         # soil
@@ -215,7 +215,7 @@ for i in range(len(seedRanges)):
             if source <= seed <= source + length:
                 tempValue = destination + seed - source
 
-        finalSeed = tempValue
+        seed = tempValue
 
         # temperature
         for map in temperature:
@@ -252,6 +252,10 @@ for i in range(len(seedRanges)):
 
         if seed < finalSeed:
             finalSeed = seed
+
+        # progress check
+        print(str(i) + ': ' + str(originalSeed) + ' - ' + str(seedRanges[i][0] + seedRanges[i][1]) + ' | ' + str(finalSeed))
+        print()
 
 print(min(seeds))
 print(finalSeed)
