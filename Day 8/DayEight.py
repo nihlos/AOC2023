@@ -1,4 +1,4 @@
-# using this to find the lowest common denominator amongst all steps to Z for p2
+# using this to find the lowest common multiple amongst all steps to Z for p2
 from math import lcm
 
 file = open('input.txt','r').read().split('\n')
