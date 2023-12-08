@@ -172,91 +172,58 @@ for card in cards:
 
         if type > finalType:
             finalType = type
-            editedCard = tempCard
 
     if finalType == 7:
-        if 'J' in card:
-            fiveKind2.append(editedCard + 'P:' + str(cards.index(card)))
-        else:
-            fiveKind2.append(editedCard + ':' + str(cards.index(card)))
+        fiveKind2.append(card)
     if finalType == 6:
-        if 'J' in card:
-            fourKind2.append(editedCard + 'P:' + str(cards.index(card)))
-        else:
-            fourKind2.append(editedCard + ':' + str(cards.index(card)))
+        fourKind2.append(card)
     if finalType == 5:
-        if 'J' in card:
-            fullHouse2.append(editedCard + 'P:' + str(cards.index(card)))
-        else:
-            fullHouse2.append(editedCard + ':' + str(cards.index(card)))
+        fullHouse2.append(card)
     if finalType == 4:
-        if 'J' in card:
-            threeKind2.append(editedCard + 'P:' + str(cards.index(card)))
-        else:
-            threeKind2.append(editedCard + ':' + str(cards.index(card)))
+        threeKind2.append(card)
     if finalType == 3:
-        if 'J' in card:
-            twoPair2.append(editedCard + 'P:' + str(cards.index(card)))
-        else:
-            twoPair2.append(editedCard + ':' + str(cards.index(card)))
+        twoPair2.append(card)
     if finalType == 2:
-        if 'J' in card:
-            onePair2.append(editedCard + 'P:' + str(cards.index(card)))
-        else:
-            onePair2.append(editedCard + ':' + str(cards.index(card)))
+        onePair2.append(card)
     if finalType == 1:
-        if 'J' in card:
-            highCard2.append(editedCard + 'P:' + str(cards.index(card)))
-        else:
-            highCard2.append(editedCard + ':' + str(cards.index(card)))
+        highCard2.append(card)
 
 
-sort_order = {'A': 0, 'K': 1, 'Q': 2, 'T': 3, '9': 4, '8': 5, '7': 6, '6': 7, '5': 8, '4': 9, '3': 10, '2': 11, 'P': 12}
+sort_order = {'A': 0, 'K': 1, 'Q': 2, 'T': 3, '9': 4, '8': 5, '7': 6, '6': 7, '5': 8, '4': 9, '3': 10, '2': 11, 'J': 12}
 
 # sort lists
-fiveKind2.sort(key=lambda x: [sort_order[c] for c in x.split(':').pop(0)])
-fourKind2.sort(key=lambda x: [sort_order[c] for c in x.split(':').pop(0)])
-fullHouse2.sort(key=lambda x: [sort_order[c] for c in x.split(':').pop(0)])
-threeKind2.sort(key=lambda x: [sort_order[c] for c in x.split(':').pop(0)])
-twoPair2.sort(key=lambda x: [sort_order[c] for c in x.split(':').pop(0)])
-onePair2.sort(key=lambda x: [sort_order[c] for c in x.split(':').pop(0)])
-highCard2.sort(key=lambda x: [sort_order[c] for c in x.split(':').pop(0)])
+fiveKind2.sort(key=lambda x: [sort_order[c] for c in x])
+fourKind2.sort(key=lambda x: [sort_order[c] for c in x])
+fullHouse2.sort(key=lambda x: [sort_order[c] for c in x])
+threeKind2.sort(key=lambda x: [sort_order[c] for c in x])
+twoPair2.sort(key=lambda x: [sort_order[c] for c in x])
+onePair2.sort(key=lambda x: [sort_order[c] for c in x])
+highCard2.sort(key=lambda x: [sort_order[c] for c in x])
 
-print(cards2)
 
 # get sum
 count = len(cards)
 for card in fiveKind2:
-    print(card)
-    print(count)
-    print(bet[int(card.split(':').pop(1))])
-    p2 += bet[int(card.split(':').pop(1))] * count
+    p2 += bet[cards.index(card)] * count
     count -= 1
 for card in fourKind2:
-    p2 += bet[int(card.split(':').pop(1))] * count
+    p2 += bet[cards.index(card)] * count
     count -= 1
 for card in fullHouse2:
-    p2 += bet[int(card.split(':').pop(1))] * count
+    p2 += bet[cards.index(card)] * count
     count -= 1
 for card in threeKind2:
-    p2 += bet[int(card.split(':').pop(1))] * count
+    p2 += bet[cards.index(card)] * count
     count -= 1
 for card in twoPair2:
-    p2 += bet[int(card.split(':').pop(1))] * count
+    p2 += bet[cards.index(card)] * count
     count -= 1
 for card in onePair2:
-    p2 += bet[int(card.split(':').pop(1))] * count
+    p2 += bet[cards.index(card)] * count
     count -= 1
 for card in highCard2:
-    p2 += bet[int(card.split(':').pop(1))] * count
+    p2 += bet[cards.index(card)] * count
     count -= 1
 
-print(fiveKind2)
-print(fourKind2)
-print(fullHouse2)
-print(threeKind2)
-print(twoPair2)
-print(onePair2)
-print(highCard2)
 print(p1)
 print(p2)
