@@ -1,4 +1,4 @@
-import re, math
+import re
 file = open('input.txt', 'r').read().split('\n')
 
 p1 = 0
