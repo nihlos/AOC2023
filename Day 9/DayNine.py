@@ -24,6 +24,7 @@ for line in file:
     for list in historyList:
         p1 += list[len(list) - 1]
 
+    # p2
     first = historyList[len(historyList) - 1][0]
     for i in range(len(historyList)):
         first = historyList[len(historyList) - 1 - i][0] - first
